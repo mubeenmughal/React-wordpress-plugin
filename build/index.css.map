@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAAA;EACE;EACA;EACA;EACA;AACF,C","sources":["webpack://brads-boilerplate-block-plugin/./src/index.scss"],"sourcesContent":[".makeUpYourBlockTypeName {\n  background-color: #0d46e3;\n  border: 1px solid #144eee;\n  border-radius: 5px;\n  padding: 20px;\n}\n"],"names":[],"sourceRoot":""}
