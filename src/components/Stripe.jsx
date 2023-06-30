@@ -73,7 +73,7 @@ export const Stripe = () => {
                         required
                     />
                 </div>
-                <button type="submit" disabled={isLoading} style={{ marginLeft: '10%' }}>
+                <button className="button" type="submit" disabled={isLoading} style={{ marginLeft: '10%' }}>
                     {isLoading ? 'Loading...' : 'Submit'}
                 </button>
             </form>

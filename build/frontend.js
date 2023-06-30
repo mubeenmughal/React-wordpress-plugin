@@ -3936,6 +3936,8 @@ __webpack_require__.r(__webpack_exports__);
 const GetPaypal = () => {
   const [price, setPrice] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const [productName, setProductName] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [clientId, setClientId] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [secretKey, setSecretKey] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const [currency, setCurrency] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const [approvalUrl, setApprovalUrl] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
@@ -3947,8 +3949,8 @@ const GetPaypal = () => {
     };
     try {
       const response = await axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('https://100088.pythonanywhere.com/api/paypal/link', {
-        paypal_client_id: "AVJXJddOEG7WGrLkTzg4_9ODsDNhIHrqT4ZL6gwXRz1ftQELliYtticZH-kLjoYaTZfNn_8y5onH_YP3",
-        paypal_secret_key: "ELsNyOGLDJVZCsfuuu5AhsFRmQbgBwxEVZteB-2XLZm8RLa8cPeS_cfNi35w7bJwkOKDHOnNxyHsJKu6",
+        paypal_client_id: clientId,
+        paypal_secret_key: secretKey,
         price: price,
         product: productName,
         currency_code: currency
@@ -3967,7 +3969,7 @@ const GetPaypal = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "price",
     style: {
-      margin: '40px'
+      margin: '60px'
     }
   }, "Price:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "number",
@@ -3978,7 +3980,7 @@ const GetPaypal = () => {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "product",
     style: {
-      margin: '30px'
+      margin: '50px'
     }
   }, "Product:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
@@ -3989,7 +3991,29 @@ const GetPaypal = () => {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "product",
     style: {
-      margin: '25px'
+      margin: '42px'
+    }
+  }, "Paypal ID:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    id: "product",
+    value: clientId || '',
+    onChange: e => setClientId(e.target.value),
+    required: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "product",
+    style: {
+      margin: '35px'
+    }
+  }, "Paypal Key:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    id: "product",
+    value: secretKey || '',
+    onChange: e => setSecretKey(e.target.value),
+    required: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "product",
+    style: {
+      margin: '45px'
     }
   }, "Currency:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
@@ -3998,10 +4022,11 @@ const GetPaypal = () => {
     onChange: e => setCurrency(e.target.value),
     required: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "button",
     type: "submit",
     disabled: isLoading,
     style: {
-      marginLeft: '10%'
+      marginLeft: '13%'
     }
   }, isLoading ? 'Loading...' : 'Get Link')), approvalUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Approval url: ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: approvalUrl
@@ -4032,6 +4057,7 @@ __webpack_require__.r(__webpack_exports__);
 const GetStripe = () => {
   const [price, setPrice] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const [productName, setProductName] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [stripe, setStripe] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const [currency, setCurrency] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const [approvalUrl, setApprovalUrl] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
@@ -4043,7 +4069,7 @@ const GetStripe = () => {
     };
     try {
       const response = await axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('https://100088.pythonanywhere.com/api/stripe/link', {
-        stripe_key: "sk_test_51LiKUnEJkGNthfbzNbTn7Up7EnVwyeqRWLcRX1UWyq7ABL7wn1VMmHsS4Aox3U9b2nh3HkHd32vsQRR7nItC8ybv00WChhFen4",
+        stripe_key: stripe,
         price: price,
         product: productName,
         currency_code: currency
@@ -4086,6 +4112,17 @@ const GetStripe = () => {
     style: {
       margin: '25px'
     }
+  }, "Stripe ID:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    id: "product",
+    value: stripe || '',
+    onChange: e => setStripe(e.target.value),
+    required: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "product",
+    style: {
+      margin: '25px'
+    }
   }, "Currency:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     id: "currency",
@@ -4093,6 +4130,7 @@ const GetStripe = () => {
     onChange: e => setCurrency(e.target.value),
     required: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "button",
     type: "submit",
     disabled: isLoading,
     style: {
@@ -4239,6 +4277,7 @@ const Paypal = () => {
     onChange: e => setCurrency(e.target.value),
     required: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "button",
     type: "submit",
     disabled: isLoading,
     style: {
@@ -4339,6 +4378,7 @@ const Stripe = () => {
     onChange: e => setCurrency(e.target.value),
     required: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "button",
     type: "submit",
     disabled: isLoading,
     style: {
@@ -11021,8 +11061,25 @@ divsToUpdate.forEach(div => {
   div.classList.remove("boilerplate-update-me");
 });
 function OurComponent(props) {
-  // return <Home/>
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Stripe__WEBPACK_IMPORTED_MODULE_4__.Stripe, null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Paypal__WEBPACK_IMPORTED_MODULE_8__.Paypal, null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_GetPaypal__WEBPACK_IMPORTED_MODULE_6__.GetPaypal, null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_GetStripe__WEBPACK_IMPORTED_MODULE_7__.GetStripe, null));
+  const [showStripe, setShowStripe] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  const [showPaypal, setShowPaypal] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  const handleStripeButtonClick = () => {
+    setShowStripe(true);
+    setShowPaypal(false);
+  };
+  const handlePaypalButtonClick = () => {
+    setShowStripe(false);
+    setShowPaypal(true);
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "button-container"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "button",
+    onClick: handleStripeButtonClick
+  }, "Stripe"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "button",
+    onClick: handlePaypalButtonClick
+  }, "Paypal")), showStripe && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Stripe__WEBPACK_IMPORTED_MODULE_4__.Stripe, null), showPaypal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Paypal__WEBPACK_IMPORTED_MODULE_8__.Paypal, null), showPaypal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_GetPaypal__WEBPACK_IMPORTED_MODULE_6__.GetPaypal, null), showStripe && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_GetStripe__WEBPACK_IMPORTED_MODULE_7__.GetStripe, null));
 }
 
 // import React from 'react';

@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    background-color: wheat;
   }
   
   .button {
@@ -33,7 +34,7 @@
     padding: 10px 20px;
     margin: 10px;
     background-color: #4caf50;
-    color: white;
+    color: rgb(14, 13, 13);
     text-decoration: none;
     border-radius: 5px;
   }

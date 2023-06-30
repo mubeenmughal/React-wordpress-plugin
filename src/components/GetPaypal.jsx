@@ -6,6 +6,8 @@ import axios from 'axios';
 export const GetPaypal = () => {
     const [price, setPrice] = useState('');
     const [productName, setProductName] = useState('');
+    const [clientId, setClientId] = useState('');
+    const [secretKey, setSecretKey] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [currency, setCurrency] = useState('');
     const [approvalUrl, setApprovalUrl] = useState('');
@@ -19,8 +21,8 @@ export const GetPaypal = () => {
 
         try {
             const response = await axios.post('https://100088.pythonanywhere.com/api/paypal/link', {
-                paypal_client_id: "AVJXJddOEG7WGrLkTzg4_9ODsDNhIHrqT4ZL6gwXRz1ftQELliYtticZH-kLjoYaTZfNn_8y5onH_YP3",
-                paypal_secret_key: "ELsNyOGLDJVZCsfuuu5AhsFRmQbgBwxEVZteB-2XLZm8RLa8cPeS_cfNi35w7bJwkOKDHOnNxyHsJKu6",
+                paypal_client_id: clientId,
+                paypal_secret_key: secretKey,
                 price: price,
                 product: productName,
                 currency_code: currency
@@ -38,7 +40,7 @@ export const GetPaypal = () => {
             <h2>Get Paypal Link</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="price" style={{ margin: '40px' }}>Price:</label>
+                    <label htmlFor="price" style={{ margin: '60px' }}>Price:</label>
                     <input
                         type="number"
                         id="price"
@@ -48,7 +50,7 @@ export const GetPaypal = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="product" style={{ margin: '30px' }}>Product:</label>
+                    <label htmlFor="product" style={{ margin: '50px' }}>Product:</label>
                     <input
                         type="text"
                         id="product"
@@ -57,8 +59,31 @@ export const GetPaypal = () => {
                         required
                     />
                 </div>
+
                 <div>
-                    <label htmlFor="product" style={{ margin: '25px' }}>Currency:</label>
+                    <label htmlFor="product" style={{ margin: '42px' }}>Paypal ID:</label>
+                    <input
+                        type="text"
+                        id="product"
+                        value={clientId || ''}
+                        onChange={(e) => setClientId(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="product" style={{ margin: '35px' }}>Paypal Key:</label>
+                    <input
+                        type="text"
+                        id="product"
+                        value={secretKey || ''}
+                        onChange={(e) => setSecretKey(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="product" style={{ margin: '45px' }}>Currency:</label>
                     <input
                         type="text"
                         id="currency"
@@ -67,7 +92,7 @@ export const GetPaypal = () => {
                         required
                     />
                 </div>
-                <button type="submit" disabled={isLoading} style={{ marginLeft: '10%' }}>
+                <button className="button" type="submit" disabled={isLoading} style={{ marginLeft: '13%' }}>
                     {isLoading ? 'Loading...' : 'Get Link'}
                 </button>
             </form>

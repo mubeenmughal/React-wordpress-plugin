@@ -35,8 +35,32 @@ divsToUpdate.forEach(div => {
 })
 
 function OurComponent(props) {
-  // return <Home/>
-  return <><Stripe /> <Paypal /> <GetPaypal/> <GetStripe/></>
+  const [showStripe, setShowStripe] = useState(false);
+  const [showPaypal, setShowPaypal] = useState(false);
+
+  const handleStripeButtonClick = () => {
+    setShowStripe(true);
+    setShowPaypal(false);
+  };
+
+  const handlePaypalButtonClick = () => {
+    setShowStripe(false);
+    setShowPaypal(true);
+  };
+
+  return (
+    <>
+      <div className="button-container">
+        <button className="button" onClick={handleStripeButtonClick}>Stripe</button>
+        <button className="button" onClick={handlePaypalButtonClick}>Paypal</button>
+      </div>
+
+      {showStripe && <Stripe />}
+      {showPaypal && <Paypal />}
+      {showPaypal && <GetPaypal />}
+      {showStripe && <GetStripe />}
+    </>
+  )
 }
 
 

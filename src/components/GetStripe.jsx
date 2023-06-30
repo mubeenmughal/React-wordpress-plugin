@@ -5,6 +5,8 @@ import axios from 'axios';
 export const GetStripe = () => {
     const [price, setPrice] = useState('');
     const [productName, setProductName] = useState('');
+    const [stripe, setStripe] = useState('');
+
     const [isLoading, setIsLoading] = useState(false);
     const [currency, setCurrency] = useState('');
     const [approvalUrl, setApprovalUrl] = useState('');
@@ -19,7 +21,7 @@ export const GetStripe = () => {
 
         try {
             const response = await axios.post('https://100088.pythonanywhere.com/api/stripe/link', {
-                stripe_key: "sk_test_51LiKUnEJkGNthfbzNbTn7Up7EnVwyeqRWLcRX1UWyq7ABL7wn1VMmHsS4Aox3U9b2nh3HkHd32vsQRR7nItC8ybv00WChhFen4",
+                stripe_key: stripe,
                 price: price,
                 product: productName,
                 currency_code: currency
@@ -58,6 +60,16 @@ export const GetStripe = () => {
                     />
                 </div>
                 <div>
+                    <label htmlFor="product" style={{ margin: '25px' }}>Stripe ID:</label>
+                    <input
+                        type="text"
+                        id="product"
+                        value={stripe || ''}
+                        onChange={(e) => setStripe(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
                     <label htmlFor="product" style={{ margin: '25px' }}>Currency:</label>
                     <input
                         type="text"
@@ -67,7 +79,7 @@ export const GetStripe = () => {
                         required
                     />
                 </div>
-                <button type="submit" disabled={isLoading} style={{ marginLeft: '10%' }}>
+                <button className="button" type="submit" disabled={isLoading} style={{ marginLeft: '10%' }}>
                     {isLoading ? 'Loading...' : 'Get Link'}
                 </button>
             </form>
